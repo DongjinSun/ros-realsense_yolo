@@ -128,6 +128,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/sun/ros_ws/build/gtest/cmake_install.cmake")
   include("/home/sun/ros_ws/build/realsense-ros/realsense2_description/cmake_install.cmake")
   include("/home/sun/ros_ws/build/realsense-ros/realsense2_camera/cmake_install.cmake")
+  include("/home/sun/ros_ws/build/yolov3_pytorch_ros/cmake_install.cmake")
 
 endif()
 

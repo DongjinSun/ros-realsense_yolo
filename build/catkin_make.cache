@@ -1,2 +1,2 @@
-realsense-ros/realsense2_camera:realsense-ros/realsense2_description
+realsense-ros/realsense2_camera:realsense-ros/realsense2_description:yolov3_pytorch_ros
 -DCATKIN_DEVEL_PREFIX=/home/sun/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/sun/ros_ws/install -G Unix Makefiles
