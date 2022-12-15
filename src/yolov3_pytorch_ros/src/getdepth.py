@@ -15,7 +15,7 @@ class image:
         self.bridge = CvBridge()
         self.xc = None
         self.yc = None
-        self.target = None
+        self.type = None
         self.intrinsics = rs.intrinsics()
         self.pub = rospy.Publisher('target',target, queue_size=1)
     def callback(self,msg):
@@ -24,9 +24,10 @@ class image:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "16UC1")
             pixel = [self.yc,self.xc]
             depth = cv_image[self.yc][self.xc]
-            print(depth)
+            # print(depth)
             depth_point = rs.rs2_deproject_pixel_to_point(self.intrinsics, pixel,depth)
-            send.y, send.x, send.z, send,target = depth_point[0],depth_point[1],depth_point[2], self.target
+            print(depth_point)
+            send.y, send.x, send.z, send.type = depth_point[0],depth_point[1],depth_point[2], self.target
             self.pub.publish(send)
             # depth_point = rs.rs2_deproject_pixel_to_point(, , )
             # print(cv_image.shape)
