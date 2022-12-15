@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBox.msg;/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg"
+messages_str = "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBox.msg;/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg;/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
 services_str = ""
 pkg_name = "yolov3_pytorch_ros"
 dependencies_str = "geometry_msgs;sensor_msgs;std_msgs"

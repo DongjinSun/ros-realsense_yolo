@@ -9,4 +9,6 @@
     (:file "_package_BoundingBox" :depends-on ("_package"))
     (:file "BoundingBoxes" :depends-on ("_package_BoundingBoxes"))
     (:file "_package_BoundingBoxes" :depends-on ("_package"))
+    (:file "target" :depends-on ("_package_target"))
+    (:file "_package_target" :depends-on ("_package"))
   ))

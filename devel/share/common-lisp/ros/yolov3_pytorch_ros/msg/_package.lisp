@@ -5,5 +5,7 @@
    "BOUNDINGBOX"
    "<BOUNDINGBOXES>"
    "BOUNDINGBOXES"
+   "<TARGET>"
+   "TARGET"
   ))
 
