@@ -12,7 +12,7 @@ add_message_files(
   FILES
     BoundingBox.msg
     BoundingBoxes.msg
-    target.msg
+    Target.msg
 )
 
 generate_messages(

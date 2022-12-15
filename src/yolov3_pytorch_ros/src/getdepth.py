@@ -2,7 +2,8 @@
 
 import rospy
 from std_msgs.msg import Int32
-from yolov3_pytorch_ros.msg import BoundingBox, BoundingBoxes, target
+from yolov3_pytorch_ros.msg import BoundingBox, BoundingBoxes
+from bin_msgs.msg import Target
 from sensor_msgs.msg import Image, CameraInfo
 from cv_bridge import CvBridge, CvBridgeError
 from datetime import datetime
@@ -15,29 +16,43 @@ class image:
         self.bridge = CvBridge()
         self.xc = None
         self.yc = None
-        self.type = None
+        self._class = None
         self.intrinsics = rs.intrinsics()
-        self.pub = rospy.Publisher('target',target, queue_size=1)
+        self.pub = rospy.Publisher('target',Target, queue_size=1)
     def callback(self,msg):
         if self.xc and self.intrinsics.width:
-            send = target()
+            x = self.xc[:]
+            y = self.yc[:]
+            _class = self._class[:]
+
+            send = Target()
             cv_image = self.bridge.imgmsg_to_cv2(msg, "16UC1")
-            pixel = [self.yc,self.xc]
-            depth = cv_image[self.yc][self.xc]
-            # print(depth)
-            depth_point = rs.rs2_deproject_pixel_to_point(self.intrinsics, pixel,depth)
-            print(depth_point)
-            send.y, send.x, send.z, send.type = depth_point[0],depth_point[1],depth_point[2], self.target
+            min_depth = float("inf")
+            for i in range(len(x)):
+                depth = cv_image[y[i]][x[i]]
+                if min_depth > depth:
+                    min_depth = depth
+                    min_index = i
+
+            pixel = [y[min_index],x[min_index]]
+            depth_point = rs.rs2_deproject_pixel_to_point(self.intrinsics, pixel,min_depth)
+            print(depth_point, _class[min_index])
+            send.y, send.x, send.z, send.type = depth_point[0],depth_point[1],depth_point[2], _class[min_index]
             self.pub.publish(send)
             # depth_point = rs.rs2_deproject_pixel_to_point(, , )
             # print(cv_image.shape)
-    
+        else:
+            send = Target()
+            send.y, send.x, send.z, send.type = 0,0,0,"None"
+            self.pub.publish(send)
     def callback_range(self,msg):
         try:
-            # print(1)
-            self.xc = (msg.bounding_boxes[0].xmin+msg.bounding_boxes[0].xmax)/2
-            self.yc = (msg.bounding_boxes[0].ymin+msg.bounding_boxes[0].ymax)/2
-            self.target = msg.bounding_boxes[0].Class
+            min=999
+            min_index=0
+            n=len(msg.bounding_boxes)
+            self.xc = [(msg.bounding_boxes[k].xmin+msg.bounding_boxes[k].xmax)//2 for k in range(n)]
+            self.yc = [(msg.bounding_boxes[k].ymin+msg.bounding_boxes[k].ymax)//2 for k in range(n)]
+            self._class = [msg.bounding_boxes[k].Class for k in range(n)]
         except:
             self.xc = None
             self.yc = None

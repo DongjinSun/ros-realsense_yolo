@@ -6,5 +6,6 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs(gtest)
 subdirs(realsense-ros/realsense2_description)
+subdirs(bin_msgs)
 subdirs(realsense-ros/realsense2_camera)
 subdirs(yolov3_pytorch_ros)

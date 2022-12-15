@@ -36,7 +36,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov3_pytorch_ros/msg" TYPE FILE FILES
     "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBox.msg"
     "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg"
-    "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+    "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
     )
 endif()
 

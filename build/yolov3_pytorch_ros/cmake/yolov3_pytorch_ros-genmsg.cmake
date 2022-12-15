@@ -27,9 +27,9 @@ add_custom_target(_yolov3_pytorch_ros_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "yolov3_pytorch_ros" "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" "yolov3_pytorch_ros/BoundingBox:std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_custom_target(_yolov3_pytorch_ros_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "yolov3_pytorch_ros" "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "yolov3_pytorch_ros" "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" ""
 )
 
 #
@@ -51,7 +51,7 @@ _generate_msg_cpp(yolov3_pytorch_ros
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/yolov3_pytorch_ros
 )
 _generate_msg_cpp(yolov3_pytorch_ros
-  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/yolov3_pytorch_ros
@@ -75,7 +75,7 @@ get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Bo
 add_dependencies(yolov3_pytorch_ros_generate_messages_cpp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_cpp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_cpp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -100,7 +100,7 @@ _generate_msg_eus(yolov3_pytorch_ros
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/yolov3_pytorch_ros
 )
 _generate_msg_eus(yolov3_pytorch_ros
-  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/yolov3_pytorch_ros
@@ -124,7 +124,7 @@ get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Bo
 add_dependencies(yolov3_pytorch_ros_generate_messages_eus _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_eus _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_eus _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -149,7 +149,7 @@ _generate_msg_lisp(yolov3_pytorch_ros
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/yolov3_pytorch_ros
 )
 _generate_msg_lisp(yolov3_pytorch_ros
-  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/yolov3_pytorch_ros
@@ -173,7 +173,7 @@ get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Bo
 add_dependencies(yolov3_pytorch_ros_generate_messages_lisp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_lisp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_lisp _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -198,7 +198,7 @@ _generate_msg_nodejs(yolov3_pytorch_ros
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/yolov3_pytorch_ros
 )
 _generate_msg_nodejs(yolov3_pytorch_ros
-  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/yolov3_pytorch_ros
@@ -222,7 +222,7 @@ get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Bo
 add_dependencies(yolov3_pytorch_ros_generate_messages_nodejs _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_nodejs _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_nodejs _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -247,7 +247,7 @@ _generate_msg_py(yolov3_pytorch_ros
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/yolov3_pytorch_ros
 )
 _generate_msg_py(yolov3_pytorch_ros
-  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg"
+  "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/yolov3_pytorch_ros
@@ -271,7 +271,7 @@ get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Bo
 add_dependencies(yolov3_pytorch_ros_generate_messages_py _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/BoundingBoxes.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_py _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/target.msg" NAME_WE)
+get_filename_component(_filename "/home/sun/ros_ws/src/yolov3_pytorch_ros/msg/Target.msg" NAME_WE)
 add_dependencies(yolov3_pytorch_ros_generate_messages_py _yolov3_pytorch_ros_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
