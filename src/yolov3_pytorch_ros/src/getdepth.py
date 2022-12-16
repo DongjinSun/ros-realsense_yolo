@@ -19,6 +19,7 @@ class image:
         self._class = None
         self.intrinsics = rs.intrinsics()
         self.pub = rospy.Publisher('target',Target, queue_size=1)
+    # 이미지를 받아와서 거리를 계산하는 메소드
     def callback(self,msg):
         if self.xc and self.intrinsics.width:
             x = self.xc[:]
@@ -41,12 +42,11 @@ class image:
             if not (-1<send.x<1):
                 print(depth_point, _class[min_index])
                 self.pub.publish(send)
-            # depth_point = rs.rs2_deproject_pixel_to_point(, , )
-            # print(cv_image.shape)
+
         else:
             send = Target()
             send.y, send.x, send.z, send.type = 0,0,0,"None"
-            # self.pub.publish(send)
+    # 물체를 인식했으면 물체의 bounding box 픽셀값을 주는 함수
     def callback_range(self,msg):
         try:
             min=999
@@ -59,7 +59,7 @@ class image:
             self.xc = None
             self.yc = None
             print("Not detected")
-    
+    # camera_info 정보를 받아와서 intrinsics 객체를 만들어 주기 위한 함수
     def callback_info(self,msg):
         if self.xc:
             self.intrinsics.width = msg.width
@@ -71,27 +71,6 @@ class image:
             self.intrinsics.model = rs.distortion.brown_conrady
             for i in range(len(msg.D)):
                 self.intrinsics.coeffs[i] = msg.D[i]
-                # test
-            # print(self.intrinsics.ppx)
-        # self.xc = (msg.bounding_boxes[0].xmin+msg.bounding_boxes[0].xmax)/2
-        # self.yc = (msg.bounding_boxes[0].ymin+msg.bounding_boxes[0].ymax)/2
-
-
-
-# pipeline = rs.pipeline()
-# pipe_profile = pipeline.start()
-# frames = pipeline.wait_for_frames()
-# depth_frame = frames.get_depth_frame()
-# color_frame = frames.get_color_frame()
-# depth_intrin = depth_frame.profile.as_video_stream_profile().intrinsics
-# color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
-# depth_to_color_extrin = depth_frame.profile.get_extrinsics_to(color_frame.profile)
-# depth_sensor = pipe_profile.get_device().first_depth_sensor()
-# depth_scale = depth_sensor.get_depth_scale()
-# depth_pixel = [200, 200]
-# depth_point = rs.rs2_deproject_pixel_to_point(depth_intrin, depth_pixel, depth_scale)
-
-
 
 if __name__ == '__main__':
     imgs = image()
@@ -100,18 +79,4 @@ if __name__ == '__main__':
     rospy.Subscriber('detected_objects_in_image', BoundingBoxes, imgs.callback_range)
     rospy.Subscriber('camera/aligned_depth_to_color/camera_info', CameraInfo,imgs.callback_info)
     rospy.spin()
-    ##test
-    # pipeline = rs.pipeline()
-    # pipe_profile = pipeline.start()
-    # frames = pipeline.wait_for_frames()
-    # depth_frame = frames.get_depth_frame()
-    # color_frame = frames.get_color_frame()
-    # depth_intrin = depth_frame.profile.as_video_stream_profile().intrinsics
-    # print(depth_intrin.model)
-    # color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
-    # depth_to_color_extrin = depth_frame.profile.get_extrinsics_to(color_frame.profile)
-    # depth_sensor = pipe_profile.get_device().first_depth_sensor()
-    # depth_scale = depth_sensor.get_depth_scale()
-    # depth_pixel = [200, 200]
-    # depth_point = rs.rs2_deproject_pixel_to_point(depth_intrin, depth_pixel, depth_scale)
 
