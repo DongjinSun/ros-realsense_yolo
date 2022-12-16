@@ -36,15 +36,17 @@ class image:
 
             pixel = [y[min_index],x[min_index]]
             depth_point = rs.rs2_deproject_pixel_to_point(self.intrinsics, pixel,min_depth)
-            print(depth_point, _class[min_index])
+            
             send.y, send.x, send.z, send.type = depth_point[0],depth_point[1],depth_point[2], _class[min_index]
-            self.pub.publish(send)
+            if not (-1<send.x<1):
+                print(depth_point, _class[min_index])
+                self.pub.publish(send)
             # depth_point = rs.rs2_deproject_pixel_to_point(, , )
             # print(cv_image.shape)
         else:
             send = Target()
             send.y, send.x, send.z, send.type = 0,0,0,"None"
-            self.pub.publish(send)
+            # self.pub.publish(send)
     def callback_range(self,msg):
         try:
             min=999
